@@ -24,17 +24,54 @@ In timing diagram Q0 is changing as soon as the negative edge of clock pulse is 
 
 **Procedure**
 
-/* write all the steps invloved */
+Step 1: Initialize the Counter Initialize the 4-bit counter with all bits set to 0 (0000).
+
+Step 2: Receive Clock Pulse Receive a clock pulse (CLK).
+
+Step 3: Check Clock Pulse If the clock pulse is 0, go to step 8.
+
+Step 4: Toggle LSB (Q0) Toggle the least significant bit (Q0).
+
+Step 5: Check Q0 If Q0 is 1, go to step 6.
+
+Step 6: Toggle Q1 Toggle the next bit (Q1).
+
+Step 7: Repeat for Q2 and Q3 Repeat steps 5-6 for Q2 and Q3.
+
+Step 8: Update Counter Outputs Update the counter outputs (Q3, Q2, Q1, Q0).
+
+Step 9: Repeat Repeat steps 2-8 for each clock pulse.
+
+
 
 **PROGRAM**
+~~~
+module exp12(out,clk,rst);
+input clk,rst;
+output reg [3:0]out;
+always @ (posedge clk)
+begin
+   if(rst)
+     out<=0;
+   else 
+     out <= out+1;
+end
+endmodule
+~~~
+Developed by: Lokesh B
 
-/* Program for 4 Bit Ripple Counter and verify its truth table in quartus using Verilog programming.
-
- Developed by: RegisterNumber:
-*/
+RegisterNumber:212224040172
 
 **RTL LOGIC FOR 4 Bit Ripple Counter**
 
+![442372514-10be80c6-a19c-4e3f-8793-a6cd62b335cf](https://github.com/user-attachments/assets/27bb5a5e-c93a-4217-88e8-d36a3875c223)
+
+
 **TIMING DIGRAMS FOR 4 Bit Ripple Counter**
 
+![442372602-4ee13fb0-4a8c-495e-9e4c-9d348b590e72](https://github.com/user-attachments/assets/235f922d-3293-4391-a87a-98f14cf8630d)
+
+
 **RESULTS**
+
+Thus implementing 4 Bit Ripple Counter using Verilog and validating their functionality using their functional tables is done successfully.
